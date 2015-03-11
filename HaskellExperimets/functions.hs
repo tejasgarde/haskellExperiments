@@ -167,5 +167,92 @@ replicate' n x
 		| n <= 0 = []
 		| otherwise = x : replicate' (n-1) x
 
+-- Curied Functions are Function that has Only One Parameter
+-- Below Function Type is  Int -> Int -> Int -> Int
+-- Which Can Also Be Written Int -> (Int -> (Int -> Int))
+-- function takes a value of type Int and returns a function of type (Int -> (Int -> Int)
+
+multThree :: Int -> Int -> Int -> Int
+multThree x y z = x * y * z
+
+-- Below Function Will Call The multThree With 9 As one Fixed Parameter 
+
+
+multTwoWithNine :: Int -> Int -> Int
+multTwoWithNine x y = multThree 9 x y
+
+-- Here (multThree 9) is A Function That Takes 2 parameters
+--END
+
+
+-- Sections
+
+divideByTen :: (Floating a) => a -> a
+divideByTen = (/10)
+
+
+isUpperAlphaNum :: Char -> Bool
+isUpperAlphaNum = (`elem` ['A'..'Z'])
+
+-- Higer Order Function 
+-- Below We will use Functions That Take another Function as Parameter
+
+applyTwice :: (a -> a) -> a -> a
+applyTwice f x = f (f x)
+
+--END
+
+
+-- Implementing zipWith
+--zipWith' (+) [1,2,3] [4,5,6]
+-- > [5,7,9]
+
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ [] _ = []
+zipWith' _ _ [] = []
+zipWith' fun (x:xs) (y:ys) = fun x y : zipWith' fun xs ys
+
+
+-- END
+
+
+-- Replication Of Map Function
+--funct1 funct2 List
+--	result  funtion applued to each element of the list
+-- (+3) [1,2,3,4]
+-- [4,5,6,7]
+
+
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x:xs) = f x : map' f xs
+
+-- END
+
+-- Filter Function
+-- predicate is a function that tells whether something is true or false 
+-- that is, a function that returns a Boolean value
+-- The filter function takes a predicate and a list, and returns the list of elements
+-- that satisfy that predicate
+-- general Formal filter (predicate Function) -> List -> List that satisfy the predicate
+
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' f (x:xs)
+	| f x = x : filter' f xs
+	| otherwise = filter' f xs
+
+
+-- END
+
+
+-- More Example on Map 
+-- Programme to Find largest Number below 10k Divisible By 2829
+
+largestDivisible :: Integer
+largestDivisible = head (filter' p [10000,9999..]) 
+				where p x = x `mod` 3829 == 0	 
+
+
 
 
