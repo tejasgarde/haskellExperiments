@@ -250,7 +250,7 @@ filter' f (x:xs)
 -- Programme to Find largest Number below 10k Divisible By 2829
 
 largestDivisible :: Integer
-largestDivisible = head (filter' p [10000,9999..]) 
+largestDivisible = head' (filter' p [10000,9999..]) 
 				where p x = x `mod` 3829 == 0	 
 
 
