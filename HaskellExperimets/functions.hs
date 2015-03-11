@@ -255,4 +255,21 @@ largestDivisible = head' (filter' p [10000,9999..])
 
 
 
+-- Lambdas
+-- Lambdas are anonymous funtion , they are actully expression which can be passed as parameter
+-- In blow example we will call map' function with Lambda that will receive 1 parameter
+
+map’ (\x -> x + 3) [1,2,3,4]
+
+-- THis Will Map' function by passsing anonymous function that starts with \ and list of parameters
+-- END
+
+
+
+
+
+
+
+
+
 
