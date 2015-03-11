@@ -259,17 +259,20 @@ largestDivisible = head' (filter' p [10000,9999..])
 -- Lambdas are anonymous funtion , they are actully expression which can be passed as parameter
 -- In blow example we will call map' function with Lambda that will receive 1 parameter
 
-map’ (\x -> x + 3) [1,2,3,4]
+--map' (\x -> x + 3) [1,2,3,4]   Commented for Compilation issue
 
--- THis Will Map' function by passsing anonymous function that starts with \ and list of parameters
+-- This Will call Map' function by passsing anonymous function that starts with \ and list of parameters
 -- END
 
 
+-- Fold dunction 
+-- foldl 
+-- fold function will accumulate a list to get one value from all the elements of the list 
+-- the computation logic of the accumulation is present in lambda expression
+-- in below example we are summing up all the values of the list 
+-- Hence Summing logic is present in lambda ecpression passed to it
 
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
 
-
-
-
-
-
-
+-- END
