@@ -265,7 +265,7 @@ largestDivisible = head' (filter' p [10000,9999..])
 -- END
 
 
--- Fold dunction 
+-- Fold function 
 -- foldl 
 -- fold function will accumulate a list to get one value from all the elements of the list 
 -- the computation logic of the accumulation is present in lambda expression
@@ -274,5 +274,16 @@ largestDivisible = head' (filter' p [10000,9999..])
 
 sum' :: (Num a) => [a] -> a
 sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+-- END
+
+-- foldr function
+map'' :: (a -> b ) -> [a] -> [b]
+map'' f xs = foldr(\x acc -> f x : acc) [] xs
+
+
+-- in above function the Folding starts from Right  and Proceed to left 
+-- Differenece is the the Accumulator starts accumulating the values from thr Right of the list and 
+-- the order of thr parameter of the anonymous function is reversed
 
 -- END
