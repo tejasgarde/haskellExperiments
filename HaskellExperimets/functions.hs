@@ -3,6 +3,9 @@
 -- All below programs are experimental and should be used for learning purpose only
 -- This file should be load in GHCi
 
+import Data.List
+
+
 -- Comments in haskell
 -- below code shows the Pattern matching in haskell
 -- It works Just Like Switch statement in Other Languages 
@@ -301,7 +304,24 @@ map'' f xs = foldr(\x acc -> f x : acc) [] xs
 -- So Every parenthesis Pait for Function Application is replace by $ and code is more clean
 
 
+-- Modules in Haskell
+--import Data.List
+numUnique :: (Eq a) => [a] -> Int
+numUnique = length . nub
+-- \xs -> length (nub xs).
+
+-- To import specific functios of the module use
+--  import Data.List (nub, sort)
+
+-- To filter out some function if the module we can use
+-- import Data.List hiding (nub)
+
+-- when server function name are same then we use the following syntax
+--    import qualified Data.Map as M
+-- now to call filter function of Data.Map usr M.filter
 
 
+wordMap :: String -> [(String,Int)]
+wordMap = map (\ws -> (head' ws , length ws)) . group . sort . words
 
 
