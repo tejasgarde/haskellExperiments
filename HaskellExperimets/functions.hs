@@ -287,3 +287,21 @@ map'' f xs = foldr(\x acc -> f x : acc) [] xs
 -- the order of thr parameter of the anonymous function is reversed
 
 -- END
+
+
+-- Function Application with $ 	
+-- $ has low precidence than the normal function applcation its just Function Application
+-- Normal function application has left associative like f a b c is same as (((f a) b ) c)
+-- Function appication with $ has Right associativity
+-- Ex sum (filter (>10) (map (*2) [1..20]))
+-- Above function will sum up all values in list of 1 to 20 which
+-- are multiplied by 2 and the filter out that are greater than 10
+-- Same can be written by using $ as
+-- sum $ filter (>10) $ map (*2) [1..20]
+-- So Every parenthesis Pait for Function Application is replace by $ and code is more clean
+
+
+
+
+
+
