@@ -4,6 +4,8 @@
 -- This file should be load in GHCi
 
 import Data.List
+import qualified Data.Map as Map
+
 
 
 -- Comments in haskell
@@ -325,3 +327,15 @@ wordMap :: String -> [(String,Int)]
 wordMap = map (\ws -> (head' ws , length ws)) . group . sort . words
 
 
+
+-- Key value in Haskell 
+-- a Simple Map in haskell can be a lIst of Tuple which are nothing but a Key Value Pairs
+
+-- phoneNumbers = [("Tejas",1234),("Tejas2",12346),("Tejas3",45435)]
+
+--findByKey :: (Eq k) => k -> (k,v) -> v
+--findByKey key xs = head' . filter (\(k,v) -> key == k) $ xs
+
+
+-- Use haskell Preddefined Maps using import qualified Data.Map as Map
+--
