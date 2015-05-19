@@ -323,8 +323,8 @@ numUnique = length . nub
 -- now to call filter function of Data.Map usr M.filter
 
 
-wordMap :: String -> [(String,Int)]
-wordMap = map (\ws -> (head' ws , length ws)) . group . sort . words
+wordMap :: String -> [(String, Int)]
+wordMap = map' (\ws -> (head' ws, length ws)) . group . sort . words
 
 
 
@@ -338,4 +338,10 @@ wordMap = map (\ws -> (head' ws , length ws)) . group . sort . words
 
 
 -- Use haskell Preddefined Maps using import qualified Data.Map as Map
---
+
+
+
+
+
+
+
