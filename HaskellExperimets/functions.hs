@@ -340,6 +340,18 @@ wordMap = map' (\ws -> (head' ws, length ws)) . group . sort . words
 -- Use haskell Preddefined Maps using import qualified Data.Map as Map
 
 
+-- if the key is not available then empty tuple will throw error
+
+findByKey' :: (Eq k) => k -> [(k,v)] -> Maybe v
+findByKey' key [] = Nothing
+findByKey' key ((k,v):xs)
+		| key == k = Just v
+		| otherwise = findByKey' key xs	
+
+
+
+
+
 
 
 
