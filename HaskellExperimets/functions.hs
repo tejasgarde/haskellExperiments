@@ -5,6 +5,7 @@
 
 import Data.List
 import qualified Data.Map as Map
+import qualified Data.Char as Char
 
 
 
@@ -346,14 +347,20 @@ findByKey' :: (Eq k) => k -> [(k,v)] -> Maybe v
 findByKey' key [] = Nothing
 findByKey' key ((k,v):xs)
 		| key == k = Just v
-		| otherwise = findByKey' key xs	
+		| otherwise = findByKey' key xs
+
+-- Now we will use Data.Char module to Convert the list of Char (String) to convert it into INt List
+-- We will Use Data.Char as Char as loaded above and use its Functions isDigit which will verify the 
+-- Char element is Int or not and Eliminate rest chars like - , etc 
+-- after filtering it we will Pass this list to Map with function digitToIn which will do the conversion from
+-- Char to Int
 
 
+string2Digit :: String -> [Int]
+string2Digit str = map Char.digitToInt $ filter' Char.isDigit str
 
-
-
-
-
+-- string2Digit "123345-243-345234"
+-- > [1,2,3,3,4,5,2,4,3,3,4,5,2,3,4]
 
 
 
