@@ -363,4 +363,37 @@ string2Digit str = map Char.digitToInt $ filter' Char.isDigit str
 -- > [1,2,3,3,4,5,2,4,3,3,4,5,2,3,4]
 
 
+-- Making our own Type and Classes 
+
+-- First way to Create Type is by Using Type
+-- Ex to create the Bool Type 
+-- data Bool = True | False
+-- Read as Bool is a type with Value as True or False 
+-- Similarly for Int Type 
+-- data Int = -2147483648 | -2147483647 | ... | -1 | 0 | 1 | 2 | ... | 2147483647
+
+
+-- Vlaue Constructor (Ctor) For our own Shape
+data Shape = Circle Float Float Float | Rectangle Float Float Float Float
+-- :t Circle => Circle :: Float -> Float -> Float -> Shape
+-- :t Rectangle => Rectangle :: Float -> Float -> Float -> Float -> Shape
+
+-- Now we will need a Function That Will Take Shape as Generic Param and return Area
+
+
+areaOfShape :: Shape -> Float
+areaOfShape (Circle _ _ r) = pi * r * r
+areaOfShape (Rectangle x1 y1 x2 y2) = (abs $ x1 - y1) * (abs $ x2 - y2)
+
+
+-- *Main> areaOfShape (Circle 10 20 10)
+-- 314.15927
+
+-- In above we have Pased the Circle Value to the areaOfShape function and it returned us the Area
+-- The Circle Vlaue(Object) is defined as Circle 10 20 10 and in type Matching it Lands in Circle Type
+
+
+
+
+
 
