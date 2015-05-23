@@ -375,6 +375,7 @@ string2Digit str = map Char.digitToInt $ filter' Char.isDigit str
 
 -- Vlaue Constructor (Ctor) For our own Shape
 data Shape = Circle Float Float Float | Rectangle Float Float Float Float
+	deriving (Show)
 -- :t Circle => Circle :: Float -> Float -> Float -> Shape
 -- :t Rectangle => Rectangle :: Float -> Float -> Float -> Float -> Shape
 
@@ -391,6 +392,16 @@ areaOfShape (Rectangle x1 y1 x2 y2) = (abs $ x1 - y1) * (abs $ x2 - y2)
 
 -- In above we have Pased the Circle Value to the areaOfShape function and it returned us the Area
 -- The Circle Vlaue(Object) is defined as Circle 10 20 10 and in type Matching it Lands in Circle Type
+
+
+-- FOr Now  if we declear the Circle Type then GHC will throw the error. 
+-- TO show it on the Type must be derived from the SHow Type
+
+-- data Shape = Circle Float Float Float | Rectangle FLoat Float Float Float
+--		Deriving (Show)
+
+
+
 
 
 
