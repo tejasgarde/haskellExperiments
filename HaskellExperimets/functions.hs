@@ -374,17 +374,17 @@ string2Digit str = map Char.digitToInt $ filter' Char.isDigit str
 
 
 -- Vlaue Constructor (Ctor) For our own Shape
-data Shape = Circle Float Float Float | Rectangle Float Float Float Float
-	deriving (Show)
+--data Shape = Circle Float Float Float | Rectangle Float Float Float Float
+--	deriving (Show)
 -- :t Circle => Circle :: Float -> Float -> Float -> Shape
 -- :t Rectangle => Rectangle :: Float -> Float -> Float -> Float -> Shape
 
 -- Now we will need a Function That Will Take Shape as Generic Param and return Area
 
 
-areaOfShape :: Shape -> Float
-areaOfShape (Circle _ _ r) = pi * r * r
-areaOfShape (Rectangle x1 y1 x2 y2) = (abs $ x1 - y1) * (abs $ x2 - y2)
+--areaOfShape :: Shape -> Float
+--areaOfShape (Circle _ _ r) = pi * r * r
+--areaOfShape (Rectangle x1 y1 x2 y2) = (abs $ x1 - y1) * (abs $ x2 - y2)
 
 
 -- *Main> areaOfShape (Circle 10 20 10)
@@ -401,6 +401,58 @@ areaOfShape (Rectangle x1 y1 x2 y2) = (abs $ x1 - y1) * (abs $ x2 - y2)
 --		Deriving (Show)
 
 
+
+
+-- improving Shape with Data TYpe point
+
+data Point = Point Float Float deriving (Show)
+data Shape = Circle Point Float | Rectangle Point Point deriving (Show)
+
+-- Now the New Area function will be
+
+areaOfShape :: Shape -> Float
+areaOfShape (Circle _ r) = pi * r * r
+areaOfShape (Rectangle (Point x1 y1) (Point x2 y2)) = (abs $ x2 - x1) * (abs $ y2 - y1)
+
+--ghci> area (Rectangle (Point 0 0) (Point 100 100))
+-- 10000.0
+
+-- Now we will write a function which will nudge a shape i.e It will return the Shape with points SHifted on x and y axis
+
+nudge :: Shape -> Float -> Float -> Shape
+nudge (Circle (Point x y) r) a b = Circle (Point (x+a) (y+b)) r
+nudge (Rectangle (Point x1 y1) (Point x2 y2)) a b 
+		= Rectangle (Point (x1+a) (y1+b)) (Point (x2+a) (y2+b))
+
+
+
+-- Create the Basic SHapes
+
+basicCircle :: Float -> Shape
+basicCircle r = Circle (Point 0 0 ) r
+
+
+basicRect :: Float -> Float -> Shape
+basicRect w h = Rectangle (Point 0 0 ) (Point w h)
+
+
+
+-- ghci> nudge (baseRect 40 100) 60 23
+-- Rectangle (Point 60.0 23.0) (Point 100.0 123.0)
+
+-- exporting function to Modules
+-- We can use (..) to export the value Ctor  
+-- module Shape 
+--( Point (..)
+--, Shape (..)
+--,area
+-- )
+
+-- By using Shape(..), we export all the value constructors for Shape. 
+-- This means that people who import our module can make shapes by us- ing the Rectangle and Circle value constructors.
+-- It’s the same as writing Shape (Rectangle, Circle), but shorter.
+-- Also, if we decide to add some value constructors to our type later on, we don’t need to modify the exports.
+-- That’s because using .. automatically exports all value constructors for a given type.
 
 
 
