@@ -457,6 +457,67 @@ basicRect w h = Rectangle (Point 0 0 ) (Point w h)
 
 
 
+-- Define Person Type
+
+-- data Person = Person String String Int Float String String deriving (Show)
+
+-- tejas = Person "tejas" "Garde" 25 5.6 "Pune" "India"
+
+
+-- TO define Person Type we will have to create Person instance like above but 
+-- Its Difficult to read , But haskell provides a unique way to define the type
+
+
+data Person = Person { firstName :: String
+				,lastName :: String 
+				, age :: Int
+				, height :: Float
+				, phoneNumber :: String 
+				, flavor :: String } deriving (Show)	
+
+
+
+
+
+
+data Car = Car { company :: String
+				, model :: String
+				, year :: Int } deriving (Show)
+
+
+
+tellCar :: Car -> String
+tellCar (Car {company = c, model = m , year = y }) = "This" ++ c ++ " " ++ m ++ "Was Made in " ++ show y 
+
+
+-- TO create new Type instance we use {} braces.
+
+-- Type Synonyms
+-- in Type Synonyms we just modify the new type and provide it a new name 
+-- type String = [Char]
+-- we Know that the Strings are just a Char List so its easy to refer it as String rather
+-- than List of Char
+
+-- Now we will modify the phoneBook 
+
+-- type PhoneBook = [(String,String)]
+
+-- in THis way we Can have New Type as PhoneBook
+
+-- we can also create our won typw for each of the type of Phone book to make it more readable
+
+-- type Name = String
+-- type PhoneNumber = String
+-- type PhoneBook = [(Name,PhoneNumber)]
+
+
+data LockerSate = Taken | Free deriving (Show , Eq)
+
+type Code = String
+
+type LockerMap = Map.Map Int (LockerSate , Code)
+
+
 
 
 
