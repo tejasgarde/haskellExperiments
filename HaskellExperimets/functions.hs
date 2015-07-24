@@ -534,6 +534,15 @@ data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
 
 -- Here we difrine a :-: operator with fixity of 5
 -- with the fixity we use the function as the operator
+--Infix constructors must begin with a colon
+
+
+-- Adding Two lIst togather 
+
+infixr 5 +++
+(+++) :: [a] -> [a] -> [a]
+[]  +++ yy = yy
+(x:xs) +++ yy = x : (xs +++ yy)
 
 
 
