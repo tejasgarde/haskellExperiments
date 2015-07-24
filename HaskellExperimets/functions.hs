@@ -518,6 +518,22 @@ type Code = String
 type LockerMap = Map.Map Int (LockerSate , Code)
 
 
+-- Recursive Data Types
+
+--data List a = Empty | Cons a (List a) deriving (Show,Read,Eq,Ord)
+-- ghci> 3 `Cons` (4 `Cons` (5 `Cons` Empty))
+-- Cons 3 (Cons 4 (Cons 5 Empty))
+
+-- fixity provides how the operator is binds and then it also defins the operator associativity 
+-- fixity of the * operator is like infixir 7 *
+-- that is its infix operator and has ficity is 7 which is higher
+
+infixr 5 :-:
+data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
+
+
+-- Here we difrine a :-: operator with fixity of 5
+-- with the fixity we use the function as the operator
 
 
 
