@@ -538,11 +538,69 @@ data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
 
 
 -- Adding Two lIst togather 
-
+-- Heare we are concating the String with the 
 infixr 5 +++
 (+++) :: [a] -> [a] -> [a]
 []  +++ yy = yy
 (x:xs) +++ yy = x : (xs +++ yy)
+
+
+-- Now we will use the Data Type that we have defined for our List and the operator it 
+-- lets create new operator ^++
+
+infixr 5 ^++
+(^++) :: List a -> List a -> List a
+Empty ^++ ys = ys
+(x :-: xs) ^++ ys = x :-: (xs ^++ ys)
+
+
+
+
+data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving(Show)
+
+singleton :: a -> Tree a
+singleton x = Node x EmptyTree EmptyTree
+
+
+insertTree :: (Ord a) => a -> Tree a -> Tree a
+insertTree x EmptyTree = singleton x
+insertTree x (Node a left right)
+		| x == a = Node x left right
+		| x < a = Node x (insertTree x left) right
+		| x > a = Node x left (insertTree x right)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
