@@ -490,6 +490,17 @@ tellCar :: Car -> String
 tellCar (Car {company = c, model = m , year = y }) = "This" ++ c ++ " " ++ m ++ "Was Made in " ++ show y 
 
 
+-- Sone more type 
+
+
+data Language = Java { orientation :: String } | Haskell {orientation :: String} deriving(Show)
+
+
+tellLanguage :: Language -> String
+tellLanguage (Java {orientation = o}) = "Java is :" ++ o
+tellLanguage (Haskell {orientation = o}) ="Haskell is : "++o
+
+
 -- TO create new Type instance we use {} braces.
 
 -- Type Synonyms
