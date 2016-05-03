@@ -659,3 +659,20 @@ data Car = Car {
 				, year :: Int
 			} deriving (Show)
 
+data MyPerson = MyPerson {
+			firstName :: String
+			,lastName :: String
+			,age :: Int	
+		} deriving (Eq, Show, Read)
+
+-- Since it derives from the Eq we can compare two person vals from the == and /= but
+-- Also type of all the fields must also derive Eq and Since Person has String and Int derives Eq we are ok
+
+-- let mike = MyPerson {firstName = "Mike" , lastName = "Tyson" , age = 55}
+
+-- let shane = MyPerson {firstName = "Shane" , lastName = "Warn" , age = 52}
+
+
+
+
+
