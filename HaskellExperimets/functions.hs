@@ -582,36 +582,80 @@ insertTree x (Node a left right)
 
 
 
+-- Custome TYpes from Tutorial
+-- Type Synonyms
+-- Newtype
+-- Records
+-- Algebric Data Types
+
+
+-- 1. Type Synonyms
+-- type String = [Char]
+
+type MyPoint = (Double , Double)
+
+
+midpoint :: (Double,Double) -> (Double,Double) -> (Double,Double)
+midpoint (x1 , y1) (x2,y2) = ((x1+x2)/2,(y1+y2)/2)
+
+-- Below function conveys More Information than the previous one
+midpoint' :: MyPoint -> MyPoint -> MyPoint
+midpoint' (x1 , y1) (x2,y2) = ((x1+x2)/2,(y1+y2)/2)
+
+
+-- type Synonyms are used to make code more readable and Semantic meaning
+-- type Synonyms are cokmpletly ignored by compilers
 
 
 
+-- 2. Newtype in Haskell
+
+newtype CustomerId = MakeCustomerId Int deriving (Show)
+
+-- We have newtype then Type Name and then Cunstructor
 
 
+badCustomer :: CustomerId
+badCustomer = MakeCustomerId 13
+
+-- in above code we have to use the MakeCustomerId Ctor otherwise compiler will give error
+
+-- get the value from the newtype using pattern matching
+
+--customerToInt :: CustomerId -> Int
+--customerToInt (CustomerId i) = i
 
 
+-- newtype representation can not be mixed
+
+-- Records in haskell
+
+-- Record starts with data keyword
+
+data Customer = MakeCustomer 
+	{ 
+		custId :: CustomerId
+		,name :: String
+		,luckyNumber :: Int } deriving (Show)
+
+-- Creating Customer value
+
+alias :: Customer
+alias = MakeCustomer
+	{ custId = MakeCustomerId 13
+	, name = "Alice"
+	, luckyNumber = 10 }
 
 
+-- records can no not be extended
+-- no Shared field name 
+-- Ex we can not create nre Record with custId as field name
+-- Records are weakest point and generaly should be avoided
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+data Car = Car { 
+				company:: String
+				,model :: String
+				, year :: Int
+			} deriving (Show)
 
